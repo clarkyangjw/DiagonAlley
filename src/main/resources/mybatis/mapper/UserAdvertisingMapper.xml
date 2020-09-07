@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clark.mapper.UserAdvertisingMapper">
+
+    <select id="getUserAdvertising" resultType="UserAdvertising">
+        select * from user_advertising
+    </select>
+
+    <select id="getUserAdvertisingByUserId" resultType="UserAdvertising">
+        select * from user_advertising
+        where userId = #{userId}
+    </select>
+
+    <select id="getUserAdvertisingByUserIdAndAdvertisingId" resultType="UserAdvertising">
+        select * from user_advertising
+        where roleId = #{roleId} and advertisingId = #{advertisingId}
+    </select>
+
+    <insert id="addUserAdvertising" parameterType="UserAdvertising">
+        insert into user_advertising(roleId,advertisingId)
+        values (#{roleId},
+                #{advertisingId})
+    </insert>
+
+    <update id="updateUserAdvertising" parameterType="UserAdvertising" >
+        update user_advertising
+        set roleId=#{roleId},
+            advertisingId=#{advertisingId}
+        where roleId = #{roleId} and advertisingId = #{advertisingId}
+    </update>
+
+    <delete id="deleteUserAdvertising">
+        delete from user_advertising
+        where roleId = #{roleId} and advertisingId = #{advertisingId}
+    </delete>
+</mapper>

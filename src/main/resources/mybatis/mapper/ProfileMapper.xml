@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clark.mapper.ProfileMapper">
+
+    <select id="getProfiles" resultType="Profile">
+        select * from profile
+    </select>
+
+    <select id="getProfileById" resultType="Profile">
+        select * from profile
+        where id = #{id}
+    </select>
+
+    <select id="getProfileByLastName" resultType="Profile">
+        select * from profile
+        where lastName like concat('%',#{lastName},'%')
+    </select>
+
+    <insert id="addProfile" parameterType="Profile">
+        insert into profile(firstName,lastName,genderId,birth,phone,addressId)
+        values (#{firstName},
+                #{lastName},
+                #{genderId},
+                #{birth},
+                #{phone},
+                #{addressId})
+    </insert>
+
+    <update id="updateProfile" parameterType="Profile" >
+        update profile
+        set firstName=#{firstName},
+            lastName=#{lastName},
+            genderId=#{genderId},
+            birth=#{birth},
+            phone=#{phone},
+            addressId=#{addressId},
+            isDel=#{isDel}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteProfile" parameterType="int">
+        delete from profile
+        where id=#{id}
+    </delete>
+</mapper>

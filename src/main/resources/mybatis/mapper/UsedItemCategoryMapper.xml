@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clark.mapper.UsedItemCategoryMapper">
+
+    <select id="getUsedItemCategory" resultType="UsedItemCategory">
+        select * from useditem_category
+    </select>
+
+    <select id="getUsedItemCategoryById" resultType="UsedItemCategory">
+        select * from useditem_category
+        where id = #{id}
+    </select>
+
+    <select id="getUsedItemCategoryByName" resultType="UsedItemCategory">
+        select * from useditem_category
+        where name = #{name}
+    </select>
+
+    <insert id="addUsedItemCategory" parameterType="UsedItemCategory">
+        insert into useditem_category(name,description)
+        values (#{name},
+                #{description})
+    </insert>
+
+    <update id="updateUsedItemCategory" parameterType="UsedItemCategory" >
+        update useditem_category
+        set name=#{name},
+            description=#{description}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteUsedItemCategory" parameterType="int">
+        delete from useditem_category
+        where id=#{id}
+    </delete>
+</mapper>

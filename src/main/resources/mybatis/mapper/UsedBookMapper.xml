@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clark.mapper.UsedBookMapper">
+
+    <select id="getUsedBook" resultType="UsedBook">
+        select * from used_book
+    </select>
+
+    <select id="getUsedBookById" resultType="UsedBook">
+        select * from used_book
+        where id = #{id}
+    </select>
+
+    <select id="getUsedBookByUsedItemCategoryId" resultType="UsedBook" parameterType="int">
+        select * from used_book
+        where usedItemCategoryId = #{usedItemCategoryId}
+    </select>
+
+    <select id="getUsedBookByBookName" resultType="UsedBook">
+        select * from used_book
+        where bookName like concat('%',#{bookName},'%')
+    </select>
+
+    <select id="getUsedBookByAuthor" resultType="UsedBook">
+        select * from used_book
+        where author like concat('%',#{author},'%')
+    </select>
+
+    <select id="getUsedBookByPublisher" resultType="UsedBook">
+        select * from used_book
+        where publisher like concat('%',#{publisher},'%')
+    </select>
+
+    <select id="getUsedBookBySchool" resultType="UsedBook">
+        select * from used_book
+        where school like concat('%',#{school},'%')
+    </select>
+
+    <select id="getUsedBookByCourseCode" resultType="UsedBook">
+        select * from used_book
+        where courseCode like concat('%',#{courseCode},'%')
+    </select>
+
+    <insert id="addUsedBook" parameterType="UsedBook">
+        insert into used_book(categoryId,bookName,author,publisher,
+        ISBN,school,courseCode,series)
+        values (#{categoryId},
+                #{bookName},
+                #{author},
+                #{publisher},
+                #{ISBN},
+                #{school},
+                #{courseCode},
+                #{series})
+    </insert>
+
+    <update id="updateUsedBook" parameterType="UsedBook" >
+        update used_book
+        set categoryId=#{categoryId},
+            bookName=#{bookName},
+            author=#{author},
+            publisher=#{publisher},
+            ISBN=#{ISBN},
+            school=#{school},
+            courseCode=#{courseCode},
+            series=#{series}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteUsedBook" parameterType="int">
+        delete from used_book
+        where id=#{id}
+    </delete>
+</mapper>

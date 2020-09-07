@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clark.mapper.AccountRoleMapper">
+
+    <select id="getAccountRole" resultType="AccountRole">
+        select * from account_role
+    </select>
+
+    <select id="getAccountRoleByAccountId" resultType="AccountRole">
+        select * from account_role
+        where roleid = #{roleId}
+    </select>
+
+    <select id="getAccountRoleByAccountIdAndRoleId" resultType="AccountRole">
+        select * from account_role
+        where accountId = #{accountId} and roleId = #{roleId}
+    </select>
+
+    <insert id="addAccountRole" parameterType="AccountRole">
+        insert into account_role(accountId,roleId)
+        values (#{accountId},
+                #{roleId})
+
+    </insert>
+
+    <update id="updateAccountRole" parameterType="AccountRole" >
+        update account_role
+        set accountId=#{accountId},
+            roleId=#{roleId}
+        where accountId = #{accountId} and roleId = #{roleId}
+    </update>
+
+    <delete id="deleteAccountRole">
+        delete from account_role
+        where accountId = #{accountId} and roleId = #{roleId}
+    </delete>
+
+</mapper>

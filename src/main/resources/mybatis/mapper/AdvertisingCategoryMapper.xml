@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clark.mapper.AdvertisingCategoryMapper">
+
+    <select id="getAdvertisingCategory" resultType="AdvertisingCategory">
+        select * from advertising_category
+    </select>
+
+    <select id="getAdvertisingCategoryById" resultType="AdvertisingCategory">
+        select * from advertising_category
+        where id = #{id}
+    </select>
+
+    <select id="getAdvertisingCategoryByName" resultType="AdvertisingCategory">
+        select * from advertising_category
+        where name = #{name}
+    </select>
+
+    <insert id="addAdvertisingCategory" parameterType="AdvertisingCategory">
+        insert into advertising_category(name,description)
+        values (#{name},
+                #{description})
+    </insert>
+
+    <update id="updateAdvertisingCategory" parameterType="AdvertisingCategory" >
+        update advertising_category
+        set name=#{name},
+            description=#{description}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteAdvertisingCategory" parameterType="int">
+        delete from advertising_category
+        where id=#{id}
+    </delete>
+</mapper>

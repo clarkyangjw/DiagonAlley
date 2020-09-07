@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clark.mapper.EmployeeStatusMapper">
+
+    <select id="getEmployeeStatus" resultType="EmployeeStatus">
+        select * from employee_status
+    </select>
+
+    <select id="getEmployeeStatusById" resultType="EmployeeStatus">
+        select * from employee_status
+        where id = #{id}
+    </select>
+
+    <select id="getEmployeeStatusByName" resultType="EmployeeStatus">
+        select * from employee_status
+        where name = #{name}
+    </select>
+
+</mapper>

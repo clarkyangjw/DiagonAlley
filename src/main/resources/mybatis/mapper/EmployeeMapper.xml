@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clark.mapper.EmployeeMapper">
+
+    <select id="getEmployees" resultType="Employee">
+        select * from employee
+    </select>
+
+    <select id="getEmployeeById" resultType="Employee">
+        select * from employee
+        where id = #{id}
+    </select>
+
+    <select id="getEmployeesExceptById" resultType="Employee">
+        select * from employee
+        where id != #{id}
+    </select>
+
+    <insert id="addEmployee" parameterType="Employee">
+        insert into employee(profileId,email,hired,resignation,
+                            SIN,departmentId,positionId,employeeStatusId)
+        values (#{profileId},
+                #{email},
+                #{hired},
+                #{resignation},
+                #{SIN},
+                #{departmentId},
+                #{positionId},
+                #{employeeStatusId})
+    </insert>
+
+    <update id="updateEmployee" parameterType="Employee" >
+        update employee
+        set profileId=#{profileId},
+            email=#{email},
+            hired=#{hired},
+            resignation=#{resignation},
+            SIN=#{SIN},
+            departmentId=#{departmentId},
+            positionId=#{positionId},
+            employeeStatusId=#{employeeStatusId}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteEmployee" parameterType="int">
+        delete from employee
+        where id=#{id}
+    </delete>
+
+
+</mapper>

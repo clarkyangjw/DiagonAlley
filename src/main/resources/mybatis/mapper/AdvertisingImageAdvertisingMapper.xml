@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clark.mapper.AdvertisingImageAdvertisingMapper">
+
+    <select id="getAdvertisingImageAdvertisingByAdvertisingId" resultType="AdvertisingImageAdvertising">
+        select * from advertisingimage_advertising
+        where advertisingId = #{advertisingId}
+    </select>
+
+    <insert id="addAdvertisingImageAdvertising" parameterType="AdvertisingImageAdvertising">
+        insert into advertisingimage_advertising(advertisingImageId,advertisingId)
+        values (#{advertisingImageId},
+                #{advertisingId})
+    </insert>
+
+    <update id="updateAdvertisingImageAdvertising" parameterType="AdvertisingImageAdvertising" >
+        update advertisingimage_advertising
+        set advertisingImageId=#{advertisingImageId},
+            advertisingId=#{advertisingId}
+        where advertisingImageId = #{advertisingImageId} and advertisingId = #{advertisingId}
+    </update>
+
+    <delete id="deleteAdvertisingImageAdvertising">
+        delete from advertisingimage_advertising
+        where advertisingImageId = #{advertisingImageId} and advertisingId = #{advertisingId}
+    </delete>
+</mapper>
