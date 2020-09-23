@@ -55,10 +55,10 @@
                                     <div class="login-form-container">
                                         <div class="login-register-form">
                                             <form method="post" th:action="@{/register}">
-                                                <input type="text" name="username" placeholder="Username">
-                                                <input type="password" name="password" placeholder="Password">
-                                                <input type="password" name="password2" placeholder="Retype Password">
-                                                <input name="user-email" placeholder="Email" type="email">
+                                                <input type="text" name="username" placeholder="Username" required>
+                                                <input type="password" name="password" placeholder="Password" required>
+                                                <input type="password" name="password2" placeholder="Retype Password" required>
+                                                <input name="user-email" placeholder="Email" type="email" required>
                                                 <div class="button-box">
                                                     <button type="submit">Register</button>
                                                 </div>
